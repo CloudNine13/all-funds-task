@@ -4,7 +4,7 @@ import { AddModal, ConfirmModal } from '@organisms';
 import { InfoModal } from 'src/components/organisms/SubModals/InfoModal';
 
 type ModalProps = {
-  modalType: ModalType;
+  modalType: ModalType | null;
   isModalOpen: boolean;
   handleCloseModal: () => void;
 };
