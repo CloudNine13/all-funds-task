@@ -24,8 +24,8 @@
       "@molecules": ["./src/components/molecules"],
       "@organisms": ["./src/components/organisms"],
       "@templates": ["./src/components/templates"],
-      "@pages": ["./src/pages"],
-      "@lib/*": ["src/lib/*"]
+      "@pages": ["./src/components/pages"],
+      "@lib/*": ["./src/lib/*"]
     }
   },
   "include": ["src"]
