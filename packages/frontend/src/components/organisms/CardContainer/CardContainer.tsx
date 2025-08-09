@@ -4,7 +4,7 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { StyledCard, StyledTypography } from './CardContainer.style';
 import { useState } from 'react';
-import { Modal } from '../../templates/Modal';
+import { Modal } from '@templates';
 
 type ContainerProps = {
   data: News;
@@ -12,23 +12,14 @@ type ContainerProps = {
 };
 
 const CardContainer = ({ data, pageType }: ContainerProps) => {
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
-  const [isInfoModalOpen, setIsInfoModalOpen] = useState<boolean>(false);
+  const [activeModal, setActiveModal] = useState<ModalType | null>(null);
 
-  const handleOpenDeleteModal = () => {
-    setIsDeleteModalOpen(true);
+  const handleOpenModal = (modalType: ModalType) => {
+    setActiveModal(modalType);
   };
 
-  const handleCloseDeleteModal = () => {
-    setIsDeleteModalOpen(false);
-  };
-
-  const handleOpenInfoModal = () => {
-    setIsInfoModalOpen(true);
-  };
-
-  const handleCloseInfoModal = () => {
-    setIsInfoModalOpen(false);
+  const handleCloseModal = () => {
+    setActiveModal(null);
   };
 
   return (
@@ -41,22 +32,17 @@ const CardContainer = ({ data, pageType }: ContainerProps) => {
         <StyledTypography variant="body2">{data.description}</StyledTypography>
       </CardContent>
       <CardActions>
-        <IconButton onClick={handleOpenInfoModal}>
+        <IconButton onClick={() => handleOpenModal(ModalType.INFO)}>
           <ArchiveIcon fontSize="large" />
         </IconButton>
-        <IconButton onClick={handleOpenDeleteModal}>
+        <IconButton onClick={() => handleOpenModal(ModalType.CONFIRM)}>
           {pageType === NewsPageType.ARCHIVED && <DeleteForeverIcon fontSize="large" />}
         </IconButton>
       </CardActions>
       <Modal
-        modalType={ModalType.CONFIRM}
-        isModalOpen={isDeleteModalOpen}
-        handleCloseModal={handleCloseDeleteModal}
-      />
-      <Modal
-        modalType={ModalType.INFO}
-        isModalOpen={isInfoModalOpen}
-        handleCloseModal={handleCloseInfoModal}
+        modalType={activeModal}
+        isModalOpen={activeModal !== null}
+        handleCloseModal={handleCloseModal}
       />
     </StyledCard>
   );
