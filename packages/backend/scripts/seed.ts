@@ -18,6 +18,7 @@ const seedDB = async () => {
       date: Date;
       author: string;
       archiveDate: Date | null;
+      image: string;
     }[] = [];
     for (let i = 0; i < 10; i++) {
       const isArchived = faker.datatype.boolean();
@@ -26,7 +27,8 @@ const seedDB = async () => {
         description: faker.lorem.paragraphs(3),
         date: faker.date.past(),
         author: faker.person.fullName(),
-        archiveDate: isArchived ? faker.date.past() : null
+        archiveDate: isArchived ? faker.date.past() : null,
+        image: faker.image.url()
       });
     }
 
