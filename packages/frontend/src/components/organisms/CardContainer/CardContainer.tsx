@@ -1,8 +1,7 @@
-import { ImageVariant, ModalType, NewsPageType, type NewsType } from '@lib/types';
+import { ImageVariant, NewsPageType, type NewsType } from '@lib/types';
 import { CardContent, Collapse, Typography } from '@mui/material';
 
 import { useState } from 'react';
-import { Modal } from '@templates';
 import { StyledCard } from './CardContainer.style';
 import { CardActions, CardMainInfo, ImageWithFallback } from '@molecules';
 
@@ -13,18 +12,9 @@ type ContainerProps = {
 
 const CardContainer = ({ data, pageType }: ContainerProps) => {
   const [expanded, setExpanded] = useState(false);
-  const [activeModal, setActiveModal] = useState<ModalType | null>(null);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
-
-  const handleOpenModal = (modalType: ModalType) => {
-    setActiveModal(modalType);
-  };
-
-  const handleCloseModal = () => {
-    setActiveModal(null);
   };
 
   return (
@@ -32,8 +22,8 @@ const CardContainer = ({ data, pageType }: ContainerProps) => {
       <ImageWithFallback type={ImageVariant.NORMAL} height={300} src={data.image} />
       <CardMainInfo data={data} />
       <CardActions
+        newsId={data._id}
         pageType={pageType}
-        handleOpenModal={handleOpenModal}
         expanded={expanded}
         handleExpandClick={handleExpandClick}
       />
@@ -42,11 +32,6 @@ const CardContainer = ({ data, pageType }: ContainerProps) => {
           <Typography variant="body1">{data.content}</Typography>
         </CardContent>
       </Collapse>
-      <Modal
-        modalType={activeModal}
-        isModalOpen={activeModal !== null}
-        handleCloseModal={handleCloseModal}
-      />
     </StyledCard>
   );
 };

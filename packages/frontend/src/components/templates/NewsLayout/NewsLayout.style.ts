@@ -13,7 +13,7 @@ const NewsBox = styled(Box)({
   borderRadius: '15px',
   padding: '30px',
   display: 'flex',
-  minHeight: '80vh',
+  minHeight: '60vh',
   minWidth: '1000px',
   flexDirection: 'column',
   gap: '30px',

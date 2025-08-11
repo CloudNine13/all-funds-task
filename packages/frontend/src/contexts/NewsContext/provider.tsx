@@ -1,6 +1,6 @@
 import { getNews, updateNews } from '@api';
 import { LoadingFallback } from '@atoms';
-import { NewsPageType, type NewsType } from '@lib/types';
+import { NewsPageType, type ArchiveToggleType, type NewsType } from '@lib/types';
 import { type ChangeEvent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { NewsContext } from './context';
 
@@ -32,11 +32,14 @@ export const NewsProvider = ({ children, pageType }: ProviderProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, archived]);
 
-  const archiveToggle = useCallback(async ({ id, archived }: { id: string; archived: boolean }) => {
-    await updateNews({ id, archived });
-    await fetchNews({ page, archived });
+  const archiveToggle: ArchiveToggleType = useCallback(
+    async ({ id, date }) => {
+      await updateNews({ id, date });
+      await fetchNews({ page, archived });
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    []
+  );
 
   const handlePageChange = useCallback(async (_: ChangeEvent<unknown>, value: number) => {
     setPage(value);

@@ -8,9 +8,19 @@ const getNews = async (req: Request, res: Response, next: NextFunction) => {
     const limit = parseInt(req.query.limit as string) || 5;
     const news = await newsService.getNews(archived, page, limit);
     res.json(news);
-  } catch (error: any) {
+  } catch (error: unknown) {
     next(error);
   }
 };
 
-export { getNews };
+const archiveNews = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id, date } = req.body;
+    await newsService.archiveNews(id, date);
+    res.sendStatus(204);
+  } catch (error: unknown) {
+    next(error);
+  }
+};
+
+export { getNews, archiveNews };
