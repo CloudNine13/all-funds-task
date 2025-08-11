@@ -3,7 +3,7 @@ import { LoadingFallback } from '@atoms';
 import { NewsPageType, type ApiFunctionType, type NewsType } from '@lib/types';
 import { type ChangeEvent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { NewsContext } from './context';
-import { generateRandomString } from '@lib/utils/generateRandomString';
+import { generateRandomString } from '@lib/utils';
 import { RANDOM_IMG } from './constants';
 
 type ProviderProps = {

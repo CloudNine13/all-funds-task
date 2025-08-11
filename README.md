@@ -2,16 +2,26 @@
 
 This repository contains the source code for the AllFunds company task. It's a monorepo that includes both a frontend and a backend project, located in the `packages` directory.
 
+## Projects
+
+### [Frontend](./packages/frontend)
+
+A single-page React application designed to showcase frontend development skills by interacting with a backend API to manage news articles.
+
+### [Backend](./packages/backend)
+
+A Node.js backend application built with Express.js, designed to provide a RESTful API for managing news articles. It interacts with a MongoDB database to store and retrieve article data.
+
 ## Getting Started
 
 To get the entire project up and running, you will need to start both the frontend and backend applications.
 
 ### Prerequisites
 
-*   [Node.js](https://nodejs.org/)
-*   [Bun](https://bun.sh/) (or npm/yarn)
-*   [MongoDB](https://www.mongodb.com/)
-*   [Docker](https://www.docker.com/)
+- [Node.js](https://nodejs.org/)
+- [Bun](https://bun.sh/) (or npm/yarn)
+- [MongoDB](https://www.mongodb.com/)
+- [Docker](https://www.docker.com/)
 
 ### Installation and Running (Manual)
 
@@ -69,37 +79,27 @@ To get the entire project up and running, you will need to start both the fronte
 
     The frontend application will be available at `http://localhost:3000`.
 
-## Projects
-
-### [Frontend](./packages/frontend)
-
-A single-page React application designed to showcase frontend development skills by interacting with a backend API to manage news articles.
-
-### [Backend](./packages/backend)
-
-A Node.js backend application built with Express.js, designed to provide a RESTful API for managing news articles. It interacts with a MongoDB database to store and retrieve article data.
-
 ## Technologies
 
 ### Frontend
 
-*   **React (with React DOM)**
-*   **React Router DOM**
-*   **Axios**
-*   **Formik**
-*   **Material-UI (`@mui/material`, `@mui/icons-material`)**
-*   **Emotion (`@emotion/react`, `@emotion/styled`)**
-*   **Vite**
-*   **TypeScript**
+- **React (with React DOM)**
+- **React Router DOM**
+- **Axios**
+- **Formik**
+- **Material-UI (`@mui/material`, `@mui/icons-material`)**
+- **Emotion (`@emotion/react`, `@emotion/styled`)**
+- **Vite**
+- **TypeScript**
 
 ### Backend
 
-*   **Express.js**
-*   **Mongoose**
-*   **Dotenv**
-*   **CORS**
-*   **Helmet**
-*   **Winston**
-*   **Morgan**
-*   **Nodemon**
-*   **TypeScript**
+- **Express.js**
+- **Mongoose**
+- **Dotenv**
+- **CORS**
+- **Helmet**
+- **Winston**
+- **Morgan**
+- **Nodemon**
+- **TypeScript**

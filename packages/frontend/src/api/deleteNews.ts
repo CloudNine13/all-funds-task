@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { NEWS_API_PATH } from './constants';
 
 type DeleteNewsProps = {
   id: string;
@@ -6,7 +7,7 @@ type DeleteNewsProps = {
 
 const deleteNews = async ({ id }: DeleteNewsProps) => {
   try {
-    await axios.delete(`/api/v1/news/${id}`);
+    await axios.delete(`${NEWS_API_PATH}/${id}`);
   } catch (error) {
     alert(`Error deleting News: ${error}`);
   }
