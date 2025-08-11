@@ -1,6 +1,5 @@
 import type { ChangeEvent } from 'react';
 import type { NewsType } from './News';
-import type { ArchiveToggleType } from './ArchiveToggleType';
 
 type NewsContextType = {
   news: Array<NewsType>;
@@ -9,7 +8,13 @@ type NewsContextType = {
     handlePageChange: (_: ChangeEvent<unknown>, value: number) => void;
     pages: number;
   };
-  archiveToggle: ArchiveToggleType;
+  archiveToggle: (props: { id: string; date: Date | null }) => Promise<void>;
+  addNews: (props: {
+    title: string;
+    description: string;
+    author: string;
+    content: string;
+  }) => Promise<void>;
 };
 
 export type { NewsContextType };

@@ -3,28 +3,25 @@ import { StyledForm, StyledFormControl, StyledTextareaFormControl } from './AddM
 import { useFormik } from 'formik';
 import type { SubmodalProps } from '../types';
 import { StyledBox, StyledButton } from '../style';
+import { useContext } from 'react';
+import { NewsContext } from '@contexts';
 
 const AddModal = ({ handleClose }: SubmodalProps) => {
+  const { addNews } = useContext(NewsContext);
+
   const formik = useFormik({
     initialValues: {
       title: '',
       description: '',
-      image: null
+      author: '',
+      content: ''
     },
     onSubmit: async (values) => {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        //const base64 = reader.result?.toString().replace(/^data:.+;base64,/, '');
-      };
-      reader.readAsDataURL(values.image!);
+      await addNews(values);
+      formik.resetForm();
+      handleClose();
     }
   });
-
-  const handleSubmitClick = async () => {
-    await formik.submitForm();
-    formik.resetForm();
-    handleClose();
-  };
 
   return (
     <StyledBox>
@@ -42,21 +39,42 @@ const AddModal = ({ handleClose }: SubmodalProps) => {
             onBlur={formik.handleBlur}
           />
         </StyledFormControl>
-        <StyledTextareaFormControl variant="standard">
-          <TextareaAutosize
+        <StyledFormControl variant="standard">
+          <InputLabel htmlFor="author">Author</InputLabel>
+          <Input
             required
+            id="author"
+            name="author"
+            placeholder="Article author..."
+            value={formik.values.author}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </StyledFormControl>
+        <StyledFormControl variant="standard">
+          <InputLabel htmlFor="description">description</InputLabel>
+          <Input
             id="description"
             name="description"
-            minRows={6}
             placeholder="Article description..."
             value={formik.values.description}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
+        </StyledFormControl>
+        <StyledTextareaFormControl variant="standard">
+          <TextareaAutosize
+            required
+            id="content"
+            name="content"
+            minRows={6}
+            placeholder="Article content..."
+            value={formik.values.content}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
         </StyledTextareaFormControl>
-        <StyledButton type="submit" onClick={handleSubmitClick}>
-          Submit
-        </StyledButton>
+        <StyledButton type="submit">Submit</StyledButton>
       </StyledForm>
     </StyledBox>
   );
