@@ -1,4 +1,5 @@
 import { Document, model, Schema } from 'mongoose';
+
 import { NEWS_MODEL_NAME } from '../constants.ts';
 
 type NewsType = Document & {

@@ -34,6 +34,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "dev": "nodemon ./src/server.ts",
+    "start": "bun run src/server.ts",
     "seed": "bun run scripts/seed.ts"
   }
 }
