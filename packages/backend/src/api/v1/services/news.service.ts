@@ -13,6 +13,14 @@ class NewsService {
       pages: Math.ceil(total / limit)
     };
   }
+
+  async archiveNews(id: string, date: Date | null) {
+    const news = await News.findById(id);
+    if (news) {
+      news.archiveDate = date;
+      await news.save();
+    }
+  }
 }
 
 const newsService = new NewsService();

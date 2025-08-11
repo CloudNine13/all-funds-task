@@ -2,13 +2,12 @@ import axios from 'axios';
 
 type UpdateNewsProps = {
   id: string;
-  archived: boolean;
+  date: Date | null;
 };
 
-const updateNews = async ({ id, archived }: UpdateNewsProps) => {
+const updateNews = async ({ id, date }: UpdateNewsProps) => {
   try {
-    const response = await axios.patch(`/api/v1/news/${id}`, { archived });
-    return response.data;
+    await axios.patch(`/api/v1/news/${id}`, { id, date });
   } catch (error) {
     alert(`Error updating News: ${error}`);
   }

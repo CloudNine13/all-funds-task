@@ -3,6 +3,7 @@ export type { TabType } from './TabType';
 export type { NewsType } from './News';
 export type { DataType } from './DataType';
 export type { NewsContextType } from './NewsContextType';
+export type { ArchiveToggleType } from './ArchiveToggleType';
 
 // Enums
 export { NewsPageType } from './NewsPageType';
