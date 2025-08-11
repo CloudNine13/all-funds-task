@@ -27,7 +27,9 @@ const NewsLayout = ({ news, pageType }: NewsLayoutProps) => {
       <NewsHeader pageType={pageType} openModal={handleOpenModal} />
       <NewsBox>
         {news.length > 0 &&
-          news.map((item) => <CardContainer key={item.title} pageType={pageType} data={item} />)}
+          news.map((item) => (
+            <CardContainer key={item.title + item.date} pageType={pageType} data={item} />
+          ))}
         <Pagination />
       </NewsBox>
       <Modal

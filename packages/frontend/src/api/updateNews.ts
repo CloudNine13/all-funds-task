@@ -5,9 +5,9 @@ type UpdateNewsProps = {
   date: Date | null;
 };
 
-const updateNews = async (values: UpdateNewsProps) => {
+const updateNews = async ({ id, date }: UpdateNewsProps) => {
   try {
-    await axios.patch(`/api/v1/news/${values.id}`, values);
+    await axios.patch(`/api/v1/news/${id}`, { date });
   } catch (error) {
     alert(`Error updating News: ${error}`);
   }

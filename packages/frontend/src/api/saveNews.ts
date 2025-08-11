@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-type GetNewsProps = {
+type SaveNewsProps = {
   title: string;
   description: string;
   author: string;
@@ -9,11 +9,11 @@ type GetNewsProps = {
   date: Date;
 };
 
-const saveNews = async (values: GetNewsProps) => {
+const saveNews = async (values: SaveNewsProps) => {
   try {
     await axios.post('/api/v1/news', values);
   } catch (error) {
-    alert(`Error getting News: ${error}`);
+    alert(`Error saving News: ${error}`);
   }
 };
 

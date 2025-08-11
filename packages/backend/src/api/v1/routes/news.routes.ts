@@ -1,13 +1,17 @@
 import { Router } from 'express';
-import { getNews, archiveNews, saveNews } from '../controllers/news.controller.ts';
+import { getNews, archiveNews, saveNews, deleteNews } from '../controllers/news.controller.ts';
 import { ROUTES } from '../constants.ts';
 
 const router = Router();
 
-router.get(ROUTES.ROOT, getNews);
+const { ROOT, ID } = ROUTES;
 
-router.patch(ROUTES.ID, archiveNews);
+router.get(ROOT, getNews);
 
-router.post(ROUTES.ROOT, saveNews);
+router.patch(ROOT + ID, archiveNews);
+
+router.post(ROOT, saveNews);
+
+router.delete(ROOT + ID, deleteNews);
 
 export default router;
