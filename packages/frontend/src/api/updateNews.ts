@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { NEWS_API_PATH } from './constants';
 
 type UpdateNewsProps = {
   id: string;
@@ -7,7 +8,7 @@ type UpdateNewsProps = {
 
 const updateNews = async ({ id, date }: UpdateNewsProps) => {
   try {
-    await axios.patch(`/api/v1/news/${id}`, { date });
+    await axios.patch(`${NEWS_API_PATH}/${id}`, { date });
   } catch (error) {
     alert(`Error updating News: ${error}`);
   }

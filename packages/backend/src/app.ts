@@ -24,8 +24,8 @@ app.use(
 app.use(cors());
 app.use(express.json());
 app.use(morganRequestLogger);
-app.use(errorHandler);
 app.use(express.static('public'));
 app.use(NEWS_API_PATH, newsRouter);
+app.use(errorHandler);
 
 export default app;
