@@ -103,3 +103,8 @@ To get the entire project up and running, you will need to start both the fronte
 - **Morgan**
 - **Nodemon**
 - **TypeScript**
+- **Zod**
+
+## License
+
+This project is licensed under a [Custom License](./LICENSE).

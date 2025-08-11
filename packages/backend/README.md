@@ -26,6 +26,7 @@ This project utilizes a robust set of Node.js libraries and tools to ensure effi
 *   **Morgan:** An HTTP request logger middleware for Node.js, used for logging incoming requests and their details.
 *   **Nodemon:** A utility that monitors for any changes in your source and automatically restarts your server, greatly enhancing the development workflow.
 *   **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript. It significantly improves code quality, maintainability, and developer productivity by enabling static type checking.
+*   **Zod:** A TypeScript-first schema declaration and validation library, used for defining and validating data structures.
 
 ## How to Start the Backend Application
 

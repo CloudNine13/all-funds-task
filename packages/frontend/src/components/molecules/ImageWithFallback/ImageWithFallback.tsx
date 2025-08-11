@@ -9,6 +9,7 @@ import {
   COMPONENT,
   SKELETON_ANIMATION
 } from './constants';
+import { CenteredErrorImage } from './ImageWithFallback.style';
 
 type ImageProps = {
   type: ImageVariant;
@@ -33,7 +34,14 @@ const ImageWithFallback = ({
     return <Skeleton variant={SKELETON_VARIANT} animation={SKELETON_ANIMATION} {...rest} />;
 
   if (status === ImageStatus.ERROR)
-    return <img alt={ALT_IMAGE_TEXT} loading={IMAGE_LOADING} src={IMAGE_ERROR_SRC} {...rest} />;
+    return (
+      <CenteredErrorImage
+        alt={ALT_IMAGE_TEXT}
+        loading={IMAGE_LOADING}
+        src={IMAGE_ERROR_SRC}
+        {...rest}
+      />
+    );
 
   return type === ImageVariant.LOGO ? (
     <img alt={ALT_IMAGE_TEXT} loading={IMAGE_LOADING} src={src} {...rest} />

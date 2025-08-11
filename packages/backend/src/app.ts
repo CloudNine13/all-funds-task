@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import { NEWS_API_PATH } from './api/v1/constants.ts';
 import { errorHandler } from './api/v1/middlewares/errorHandler.ts';
 import newsRouter from './api/v1/routes/news.routes.ts';
-import { LOCALHOST, SELF } from './config/constants.ts';
+import { LOCALHOST, PUBLIC_DIR_NAME, SELF } from './config/constants.ts';
 import { morganRequestLogger } from './lib/utils/loggers/index.ts';
 
 const app = express();
@@ -24,7 +24,7 @@ app.use(
 app.use(cors());
 app.use(express.json());
 app.use(morganRequestLogger);
-app.use(express.static('public'));
+app.use(express.static(PUBLIC_DIR_NAME));
 app.use(NEWS_API_PATH, newsRouter);
 app.use(errorHandler);
 

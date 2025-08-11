@@ -1,5 +1,6 @@
 import { Logger } from '../../../lib/utils/loggers/index.ts';
 import { News } from '../models/news.model.ts';
+import type { NewsType } from '../../../lib/types/index.ts';
 
 class NewsService {
   async getNews(archived: boolean, page: number, limit: number) {
@@ -19,24 +20,15 @@ class NewsService {
 
   async archiveNews(id: string, date: Date | null) {
     Logger.info(`Archiving news with id: ${id}`);
-    const news = await News.findById(id);
+    const news = await News.findByIdAndUpdate(id, { archiveDate: date });
     if (news) {
-      news.archiveDate = date;
-      await news.save();
       Logger.debug(`Archived news with id: ${id}`);
     } else {
       Logger.warn(`News with id: ${id} not found`);
     }
   }
 
-  async saveNews(values: {
-    title: string;
-    description: string;
-    author: string;
-    content: string;
-    image: string;
-    date: Date;
-  }) {
+  async saveNews(values: NewsType) {
     Logger.info('Saving news to database');
     const news = new News({ ...values });
     await news.save();
@@ -45,8 +37,12 @@ class NewsService {
 
   async deleteNews(id: string) {
     Logger.info(`Deleting news with id: ${id}`);
-    await News.findByIdAndDelete(id);
-    Logger.debug(`Deleted news with id: ${id}`);
+    const result = await News.findByIdAndDelete(id);
+    if (result) {
+      Logger.debug(`Deleted news with id: ${id}`);
+    } else {
+      Logger.warn(`News with id: ${id} not found for deletion`);
+    }
   }
 }
 

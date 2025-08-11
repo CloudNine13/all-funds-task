@@ -20,7 +20,7 @@ const newsSchema = new Schema<NewsType>(
     date: { type: Date, required: true, index: true },
     author: { type: String, required: true },
     archiveDate: { type: Date, default: null, index: true },
-    image: { type: String }
+    image: { type: String, default: null }
   },
   { timestamps: true }
 );
