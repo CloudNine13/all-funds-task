@@ -6,9 +6,9 @@ type GetNewsProps = {
   limit: number;
 };
 
-const getNews = async ({ archived, page, limit }: GetNewsProps) => {
+const getNews = async (values: GetNewsProps) => {
   try {
-    const response = await axios.get('/api/v1/news', { params: { archived, page, limit } });
+    const response = await axios.get('/api/v1/news', { params: values });
     return response.data;
   } catch (error) {
     alert(`Error getting News: ${error}`);

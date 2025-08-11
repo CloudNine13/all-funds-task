@@ -23,4 +23,14 @@ const archiveNews = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { getNews, archiveNews };
+const saveNews = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const values = req.body;
+    await newsService.saveNews(values);
+    res.sendStatus(204);
+  } catch (error: unknown) {
+    next(error);
+  }
+};
+
+export { getNews, archiveNews, saveNews };

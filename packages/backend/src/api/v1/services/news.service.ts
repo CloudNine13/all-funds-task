@@ -21,6 +21,18 @@ class NewsService {
       await news.save();
     }
   }
+
+  async saveNews(values: {
+    title: string;
+    description: string;
+    author: string;
+    content: string;
+    image: string;
+    date: Date;
+  }) {
+    const news = new News({ ...values });
+    await news.save();
+  }
 }
 
 const newsService = new NewsService();

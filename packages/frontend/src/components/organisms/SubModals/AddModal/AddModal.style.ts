@@ -4,7 +4,7 @@ import { FormControl } from '@mui/material';
 const StyledForm = styled('form')({
   display: 'flex',
   flexDirection: 'column',
-  gap: 20
+  gap: 15
 });
 
 const StyledFormControl = styled(FormControl)({
@@ -12,6 +12,7 @@ const StyledFormControl = styled(FormControl)({
 });
 
 const StyledTextareaFormControl = styled(FormControl)({
+  marginTop: '30px',
   width: '400px',
   maxHeight: '400px'
 });
