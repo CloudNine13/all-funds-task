@@ -1,6 +1,6 @@
 import morgan, { type StreamOptions } from 'morgan';
-import { MORGAN_FORMAT } from './constants.ts';
 
+import { MORGAN_FORMAT } from './constants.ts';
 import Logger from './logger.ts';
 
 const stream: StreamOptions = {

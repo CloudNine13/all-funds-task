@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { getNews, archiveNews, saveNews, deleteNews } from '../controllers/news.controller.ts';
+
 import { ROUTES } from '../constants.ts';
+import { archiveNews, deleteNews, getNews, saveNews } from '../controllers/news.controller.ts';
 
 const router = Router();
 

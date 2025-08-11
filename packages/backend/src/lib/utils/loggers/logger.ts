@@ -1,9 +1,10 @@
 import winston from 'winston';
+
 import {
+  LOG_FILE_COMBINED,
+  LOG_FILE_ERROR,
   LOG_LEVEL_DEBUG,
   LOG_LEVEL_ERROR,
-  LOG_FILE_ERROR,
-  LOG_FILE_COMBINED,
   TIMESTAMP_FORMAT
 } from './constants.ts';
 
