@@ -5,7 +5,7 @@ import { newsService } from '../services/news.service.ts';
 
 const getNews = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    Logger.info('Getting news');
+    Logger.info('Received request to get news');
     const archived = req.query.archived === 'true';
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 5;
@@ -19,7 +19,7 @@ const getNews = async (req: Request, res: Response, next: NextFunction) => {
 
 const archiveNews = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    Logger.info('Archiving news');
+    Logger.info('Received request to archive news');
     const { date } = req.body;
     const { id } = req.params;
     Logger.http(`ID: ${id}, Date: ${date}`);
@@ -32,8 +32,9 @@ const archiveNews = async (req: Request, res: Response, next: NextFunction) => {
 
 const saveNews = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    Logger.info('Saving news');
+    Logger.info('Received request to save news');
     const values = req.body;
+    Logger.http(`Saving news with title: ${values.title}`);
     await newsService.saveNews(values);
     res.sendStatus(204);
   } catch (error: unknown) {
@@ -43,7 +44,7 @@ const saveNews = async (req: Request, res: Response, next: NextFunction) => {
 
 const deleteNews = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    Logger.info('Deleting news');
+    Logger.info('Received request to delete news');
     const { id } = req.params;
     Logger.http(`ID: ${id}`);
     await newsService.deleteNews(id);

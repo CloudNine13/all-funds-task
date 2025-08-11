@@ -27,6 +27,7 @@
       "@pages": ["./src/components/pages"],
       "@contexts": ["./src/contexts"],
       "@api": ["./src/api"],
+      "@constants": ["./src/constants"],
       "@lib/*": ["./src/lib/*"]
     }
   },

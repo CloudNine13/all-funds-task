@@ -1,11 +1,13 @@
+import { ARTICLES_TAB_LABEL, ARCHIVED_TAB_LABEL, ARCHIVED_ROUTE, HOME_ROUTE } from '@constants';
+
 const tabs = [
   {
-    label: 'Articles',
-    path: '/'
+    label: ARTICLES_TAB_LABEL,
+    path: HOME_ROUTE
   },
   {
-    label: 'Archived',
-    path: '/archived'
+    label: ARCHIVED_TAB_LABEL,
+    path: ARCHIVED_ROUTE
   }
 ];
 

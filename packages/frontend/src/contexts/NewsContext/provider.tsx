@@ -4,7 +4,7 @@ import { NewsPageType, type ApiFunctionType, type NewsType } from '@lib/types';
 import { type ChangeEvent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { NewsContext } from './context';
 import { generateRandomString } from '@lib/utils';
-import { RANDOM_IMG } from './constants';
+import { NEWS_ITEMS_PER_PAGE, RANDOM_IMG } from './constants';
 
 type ProviderProps = {
   children: ReactNode;
@@ -21,7 +21,7 @@ export const NewsProvider = ({ children, pageType }: ProviderProps) => {
   const fetchNews = useCallback(async ({ page, archived }: { page: number; archived: boolean }) => {
     try {
       setIsLoading(true);
-      const response = await getNews({ archived, page, limit: 5 });
+      const response = await getNews({ archived, page, limit: NEWS_ITEMS_PER_PAGE });
       setNews(response.news);
       setPages(response.pages);
     } finally {

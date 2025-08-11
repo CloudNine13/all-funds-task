@@ -12,9 +12,10 @@ const validate = (schema: ZodObject) => (req: Request, _: Response, next: NextFu
       req.body = parsed.body;
     }
     next();
-  } catch (error: any) {
-    error.status = 400;
-    next(error);
+  } catch (error: unknown) {
+    const err = error as Error & { status: number };
+    err.status = 400;
+    next(err);
   }
 };
 

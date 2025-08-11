@@ -4,6 +4,8 @@ import { CardContent, Collapse, Typography } from '@mui/material';
 import { useState } from 'react';
 import { StyledCard } from './CardContainer.style';
 import { CardActions, CardMainInfo, ImageWithFallback } from '@molecules';
+import { IMAGE_DEFAULT_HEIGHT } from './constants';
+import { COLLAPSE_TIMEOUT_AUTO, TYPOGRAPHY_BODY1_VARIANT } from '@constants';
 
 type ContainerProps = {
   data: NewsType;
@@ -19,7 +21,11 @@ const CardContainer = ({ data, pageType }: ContainerProps) => {
 
   return (
     <StyledCard>
-      <ImageWithFallback type={ImageVariant.NORMAL} height={300} src={data.image} />
+      <ImageWithFallback
+        type={ImageVariant.NORMAL}
+        height={IMAGE_DEFAULT_HEIGHT}
+        src={data.image}
+      />
       <CardMainInfo data={data} />
       <CardActions
         newsId={data._id}
@@ -27,9 +33,9 @@ const CardContainer = ({ data, pageType }: ContainerProps) => {
         expanded={expanded}
         handleExpandClick={handleExpandClick}
       />
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout={COLLAPSE_TIMEOUT_AUTO} unmountOnExit>
         <CardContent>
-          <Typography variant="body1">{data.content}</Typography>
+          <Typography variant={TYPOGRAPHY_BODY1_VARIANT}>{data.content}</Typography>
         </CardContent>
       </Collapse>
     </StyledCard>

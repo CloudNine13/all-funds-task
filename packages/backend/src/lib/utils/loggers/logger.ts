@@ -5,23 +5,26 @@ import {
   LOG_FILE_ERROR,
   LOG_LEVEL_DEBUG,
   LOG_LEVEL_ERROR,
+  LOG_LEVEL_HTTP,
+  LOG_LEVEL_INFO,
+  LOG_LEVEL_WARN,
   TIMESTAMP_FORMAT
 } from './constants.ts';
 
 const levels = {
-  error: 0,
-  warn: 1,
-  info: 2,
-  http: 3,
-  debug: 4
+  [LOG_LEVEL_ERROR]: 0,
+  [LOG_LEVEL_WARN]: 1,
+  [LOG_LEVEL_INFO]: 2,
+  [LOG_LEVEL_HTTP]: 3,
+  [LOG_LEVEL_DEBUG]: 4
 };
 
 const colors = {
-  error: 'red',
-  warn: 'yellow',
-  info: 'green',
-  http: 'magenta',
-  debug: 'white'
+  [LOG_LEVEL_ERROR]: 'red',
+  [LOG_LEVEL_WARN]: 'yellow',
+  [LOG_LEVEL_INFO]: 'green',
+  [LOG_LEVEL_HTTP]: 'magenta',
+  [LOG_LEVEL_DEBUG]: 'white'
 };
 
 winston.addColors(colors);
