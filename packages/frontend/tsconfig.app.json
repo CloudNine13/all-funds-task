@@ -25,6 +25,8 @@
       "@organisms": ["./src/components/organisms"],
       "@templates": ["./src/components/templates"],
       "@pages": ["./src/components/pages"],
+      "@contexts": ["./src/contexts"],
+      "@api": ["./src/api"],
       "@lib/*": ["./src/lib/*"]
     }
   },

@@ -1,7 +1,8 @@
-import { FormControl, Input, InputLabel, TextareaAutosize, Typography } from '@mui/material';
-import { StyledBox, StyledButton } from '../style';
+import { Input, InputLabel, TextareaAutosize, Typography } from '@mui/material';
+import { StyledForm, StyledFormControl, StyledTextareaFormControl } from './AddModal.style';
 import { useFormik } from 'formik';
 import type { SubmodalProps } from '../types';
+import { StyledBox, StyledButton } from '../style';
 
 const AddModal = ({ handleClose }: SubmodalProps) => {
   const formik = useFormik({
@@ -28,11 +29,8 @@ const AddModal = ({ handleClose }: SubmodalProps) => {
   return (
     <StyledBox>
       <Typography variant="h4">Add new article</Typography>
-      <form
-        onSubmit={formik.handleSubmit}
-        style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
-      >
-        <FormControl variant="standard" sx={{ width: '400px' }}>
+      <StyledForm onSubmit={formik.handleSubmit}>
+        <StyledFormControl variant="standard">
           <InputLabel htmlFor="title">Name</InputLabel>
           <Input
             required
@@ -43,8 +41,8 @@ const AddModal = ({ handleClose }: SubmodalProps) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-        </FormControl>
-        <FormControl variant="standard" sx={{ width: '400px', maxHeight: 400 }}>
+        </StyledFormControl>
+        <StyledTextareaFormControl variant="standard">
           <TextareaAutosize
             required
             id="description"
@@ -55,25 +53,11 @@ const AddModal = ({ handleClose }: SubmodalProps) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-        </FormControl>
-        <FormControl variant="standard" sx={{ width: '400px' }}>
-          <input
-            required
-            type="file"
-            id="image"
-            name="image"
-            onChange={(event) => {
-              if (event.target.files && event.target.files.length > 0) {
-                formik.setFieldValue('image', event.target.files[0]);
-              }
-            }}
-            onBlur={formik.handleBlur}
-          />
-        </FormControl>
+        </StyledTextareaFormControl>
         <StyledButton type="submit" onClick={handleSubmitClick}>
           Submit
         </StyledButton>
-      </form>
+      </StyledForm>
     </StyledBox>
   );
 };

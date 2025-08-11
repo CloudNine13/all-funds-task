@@ -1,13 +1,16 @@
-import type { NewsPageType } from '@lib/types';
+import { NewsContext } from '@contexts';
+import { NewsPageType } from '@lib/types';
 import { NewsLayout } from '@templates';
-import { mockData } from './News.mock';
+import { useContext } from 'react';
 
 type NewsProps = {
   pageType: NewsPageType;
 };
 
-function News({ pageType }: NewsProps) {
-  return <NewsLayout pageType={pageType} data={mockData} />;
-}
+const News = ({ pageType }: NewsProps) => {
+  const { news } = useContext(NewsContext);
+
+  return <NewsLayout news={news} pageType={pageType} />;
+};
 
 export default News;

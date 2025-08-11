@@ -13,8 +13,12 @@ const NewsBox = styled(Box)({
   borderRadius: '15px',
   padding: '30px',
   display: 'flex',
+  minHeight: '80vh',
+  minWidth: '1000px',
   flexDirection: 'column',
-  gap: '30px'
+  gap: '30px',
+  justifyContent: 'end',
+  alignItems: 'center'
 });
 
 export { Container, NewsBox };

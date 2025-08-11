@@ -10,7 +10,6 @@ class NewsService {
 
     return {
       news,
-      total,
       pages: Math.ceil(total / limit)
     };
   }

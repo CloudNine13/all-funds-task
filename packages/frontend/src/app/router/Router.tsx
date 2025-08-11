@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoadingFallback } from '@atoms';
 import { MainLayout } from '@templates';
+import { NewsProvider } from '@contexts';
 import { routes } from './routes.ts';
 
 const Router = () => {
@@ -15,7 +16,9 @@ const Router = () => {
               path={path}
               element={
                 <Suspense fallback={<LoadingFallback />}>
-                  <Element pageType={pageType} />
+                  <NewsProvider key={pageType} pageType={pageType}>
+                    <Element pageType={pageType} />
+                  </NewsProvider>
                 </Suspense>
               }
             />
