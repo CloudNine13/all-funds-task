@@ -15,7 +15,8 @@ const getNews = async (req: Request, res: Response, next: NextFunction) => {
 
 const archiveNews = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { id, date } = req.body;
+    const { date } = req.body;
+    const { id } = req.params;
     await newsService.archiveNews(id, date);
     res.sendStatus(204);
   } catch (error: unknown) {
@@ -33,4 +34,14 @@ const saveNews = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { getNews, archiveNews, saveNews };
+const deleteNews = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    await newsService.deleteNews(id);
+    res.sendStatus(204);
+  } catch (error: unknown) {
+    next(error);
+  }
+};
+
+export { getNews, archiveNews, saveNews, deleteNews };

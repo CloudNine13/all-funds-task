@@ -17,16 +17,21 @@ type CardActionsProps = {
 };
 
 const CardActions = ({ newsId, pageType, handleExpandClick, expanded }: CardActionsProps) => {
-  const { archiveToggle } = useContext(NewsContext);
+  const { archiveToggle, removeNews } = useContext(NewsContext);
   const [activeModal, setActiveModal] = useState<ModalType | null>(null);
   const isArchived = pageType === NewsPageType.ARCHIVED;
 
-  const handleCloseModal = () => {
+  const handleCloseModal = async (isSimple?: boolean) => {
     setActiveModal(null);
+
+    if (isSimple) return;
+
     if (activeModal === ModalType.INFO) {
-      archiveToggle({ id: newsId, date: isArchived ? null : new Date() });
+      await archiveToggle({ id: newsId, date: isArchived ? null : new Date() });
       return;
     }
+
+    await removeNews({ id: newsId });
   };
 
   return (

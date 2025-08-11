@@ -7,8 +7,8 @@ const ConfirmModal = ({ handleClose }: SubmodalProps) => {
     <StyledBox>
       <Typography variant="h4">Confirm removing article</Typography>
       <StyledContainer>
-        <StyledButton onClick={handleClose}>Confirm</StyledButton>
-        <StyledButton onClick={handleClose}>Cancel</StyledButton>
+        <StyledButton onClick={() => handleClose()}>Confirm</StyledButton>
+        <StyledButton onClick={() => handleClose(true)}>Cancel</StyledButton>
       </StyledContainer>
     </StyledBox>
   );

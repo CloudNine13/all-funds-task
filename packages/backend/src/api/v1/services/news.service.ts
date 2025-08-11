@@ -33,6 +33,10 @@ class NewsService {
     const news = new News({ ...values });
     await news.save();
   }
+
+  async deleteNews(id: string) {
+    await News.findByIdAndDelete(id);
+  }
 }
 
 const newsService = new NewsService();

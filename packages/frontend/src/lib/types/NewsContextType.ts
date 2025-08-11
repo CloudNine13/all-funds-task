@@ -15,6 +15,7 @@ type NewsContextType = {
     author: string;
     content: string;
   }) => Promise<void>;
+  removeNews: ({ id }: { id: string }) => Promise<void>;
 };
 
 export type { NewsContextType };

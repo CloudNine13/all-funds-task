@@ -1,10 +1,10 @@
-import { getNews, updateNews } from '@api';
+import { getNews, updateNews, saveNews, deleteNews } from '@api';
 import { LoadingFallback } from '@atoms';
 import { NewsPageType, type ApiFunctionType, type NewsType } from '@lib/types';
 import { type ChangeEvent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { NewsContext } from './context';
-import { saveNews } from 'src/api/saveNews';
 import { generateRandomString } from '@lib/utils/generateRandomString';
+import { RANDOM_IMG } from './constants';
 
 type ProviderProps = {
   children: ReactNode;
@@ -50,7 +50,7 @@ export const NewsProvider = ({ children, pageType }: ProviderProps) => {
     content: string;
   }> = useCallback(
     async ({ title, description, author, content }) => {
-      const image = `https://picsum.photos/seed/${generateRandomString()}/1000/300`;
+      const image = RANDOM_IMG.replace('randomImage', generateRandomString());
       const date = new Date();
       await saveNews({ title, description, author, content, image, date });
       if (!archived) await fetchNews({ page, archived });
@@ -58,6 +58,11 @@ export const NewsProvider = ({ children, pageType }: ProviderProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+
+  const removeNews: ApiFunctionType<{ id: string }> = async ({ id }) => {
+    await deleteNews({ id });
+    await fetchNews({ page, archived });
+  };
 
   const handlePageChange = useCallback(async (_: ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -67,7 +72,8 @@ export const NewsProvider = ({ children, pageType }: ProviderProps) => {
     news,
     pageData: { page, handlePageChange, pages },
     archiveToggle,
-    addNews
+    addNews,
+    removeNews
   };
 
   return (

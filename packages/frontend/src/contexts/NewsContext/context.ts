@@ -9,7 +9,8 @@ const initialState: NewsContextType = {
     pages: 1
   },
   archiveToggle: () => Promise.resolve(),
-  addNews: () => Promise.resolve()
+  addNews: () => Promise.resolve(),
+  removeNews: () => Promise.resolve()
 };
 
 export const NewsContext = createContext<NewsContextType>(initialState);

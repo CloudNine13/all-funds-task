@@ -11,7 +11,7 @@ type ModalProps = {
 
 const Modal = ({ modalType, isModalOpen, handleCloseModal }: ModalProps) => {
   return (
-    <MUIModal open={isModalOpen} onClose={handleCloseModal}>
+    <MUIModal open={isModalOpen} onClose={() => handleCloseModal()}>
       {modalType === ModalType.ADD ? (
         <AddModal handleClose={handleCloseModal} />
       ) : modalType === ModalType.CONFIRM ? (
