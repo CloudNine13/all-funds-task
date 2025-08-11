@@ -1,9 +1,11 @@
 // Types
 export type { TabType } from './TabType';
-export type { News } from './News';
+export type { NewsType } from './News';
+export type { DataType } from './DataType';
+export type { NewsContextType } from './NewsContextType';
 
 // Enums
 export { NewsPageType } from './NewsPageType';
-export { ContentVariant } from './ContentVariant';
+export { ImageVariant } from './ImageVariant';
 export { ImageStatus } from './ImageStatus';
 export { ModalType } from './ModalType';

@@ -1,18 +1,23 @@
-import { ModalType, NewsPageType, type News } from '@lib/types';
-import { CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { StyledCard, StyledTypography } from './CardContainer.style';
+import { ImageVariant, ModalType, NewsPageType, type NewsType } from '@lib/types';
+import { CardContent, Collapse, Typography } from '@mui/material';
+
 import { useState } from 'react';
 import { Modal } from '@templates';
+import { StyledCard } from './CardContainer.style';
+import { CardActions, CardMainInfo, ImageWithFallback } from '@molecules';
 
 type ContainerProps = {
-  data: News;
+  data: NewsType;
   pageType: NewsPageType;
 };
 
 const CardContainer = ({ data, pageType }: ContainerProps) => {
+  const [expanded, setExpanded] = useState(false);
   const [activeModal, setActiveModal] = useState<ModalType | null>(null);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   const handleOpenModal = (modalType: ModalType) => {
     setActiveModal(modalType);
@@ -24,21 +29,19 @@ const CardContainer = ({ data, pageType }: ContainerProps) => {
 
   return (
     <StyledCard>
-      <CardMedia component="img" alt="news image" height="300" loading="lazy" image={data.image} />
-      <CardContent>
-        <Typography gutterBottom variant="h5">
-          {data.title}
-        </Typography>
-        <StyledTypography variant="body2">{data.description}</StyledTypography>
-      </CardContent>
-      <CardActions>
-        <IconButton onClick={() => handleOpenModal(ModalType.INFO)}>
-          <ArchiveIcon fontSize="large" />
-        </IconButton>
-        <IconButton onClick={() => handleOpenModal(ModalType.CONFIRM)}>
-          {pageType === NewsPageType.ARCHIVED && <DeleteForeverIcon fontSize="large" />}
-        </IconButton>
-      </CardActions>
+      <ImageWithFallback type={ImageVariant.NORMAL} height={300} src={data.image} />
+      <CardMainInfo data={data} />
+      <CardActions
+        pageType={pageType}
+        handleOpenModal={handleOpenModal}
+        expanded={expanded}
+        handleExpandClick={handleExpandClick}
+      />
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <Typography variant="body1">{data.content}</Typography>
+        </CardContent>
+      </Collapse>
       <Modal
         modalType={activeModal}
         isModalOpen={activeModal !== null}

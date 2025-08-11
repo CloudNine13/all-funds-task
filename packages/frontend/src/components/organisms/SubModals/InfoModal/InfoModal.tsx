@@ -4,7 +4,7 @@ import { StyledBox } from '../style';
 const InfoModal = () => {
   return (
     <StyledBox>
-      <Typography variant="h5">Successfully moved article to archived</Typography>
+      <Typography variant="h5">Successfully moved the article!</Typography>
     </StyledBox>
   );
 };

@@ -8,5 +8,13 @@ export default defineConfig({
   base: '/',
   build: {
     rollupOptions: { output: { manualChunks: { react: ['react', 'react-dom'] } } }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      }
+    }
   }
 });
