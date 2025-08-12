@@ -1,0 +1,1 @@
+export { useRouteMatch } from './useRouteMatch';

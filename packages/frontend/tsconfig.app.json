@@ -15,9 +15,21 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app": ["./src/app"],
+      "@atoms": ["./src/components/atoms"],
+      "@molecules": ["./src/components/molecules"],
+      "@organisms": ["./src/components/organisms"],
+      "@templates": ["./src/components/templates"],
+      "@pages": ["./src/components/pages"],
+      "@contexts": ["./src/contexts"],
+      "@api": ["./src/api"],
+      "@constants": ["./src/constants"],
+      "@lib/*": ["./src/lib/*"]
+    }
   },
   "include": ["src"]
 }

@@ -37,7 +37,6 @@ export default tseslint.config(
         }
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-empty-function': 'warn',
       'no-console': 'warn',
       'no-debugger': 'error',
       'no-duplicate-imports': 'error',
