@@ -1,3 +1,11 @@
-export const FORM_CONTROL_VARIANT_STANDARD = 'standard';
-export const COLLAPSE_TIMEOUT_AUTO = 'auto';
-export const TYPOGRAPHY_BODY1_VARIANT = 'body1';
+export const FORM_CONTROL_VARIANT = {
+  STANDARD: 'standard'
+};
+
+export const COLLAPSE_TIMEOUT = {
+  AUTO: 'auto' as const
+};
+
+export const TYPOGRAPHY_BODY = {
+  VARIANT: 'body1' as const
+};

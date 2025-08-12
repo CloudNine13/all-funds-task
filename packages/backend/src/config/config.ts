@@ -1,8 +1,9 @@
 import path from 'path';
 
 import dotenv from 'dotenv';
+import { DOTENV_CONFIG_PATH } from './constants.ts';
 
-dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+dotenv.config({ path: path.resolve(process.cwd(), DOTENV_CONFIG_PATH) });
 
 const config = {
   port: parseInt(process.env.PORT),

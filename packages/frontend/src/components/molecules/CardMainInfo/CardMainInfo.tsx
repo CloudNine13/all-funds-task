@@ -1,9 +1,9 @@
 import { formatTimestamp } from '@lib/utils';
 import { ArchivedText, InfoBox, InfoTypography } from './CardMainInfo.style';
 import { CardContent, Typography } from '@mui/material';
-import type { NewsType } from '@lib/types';
+import type { CardMainInfoProps } from '@lib/types';
 
-const CardMainInfo = ({ data }: { data: NewsType }) => {
+const CardMainInfo = ({ data }: { data: CardMainInfoProps }) => {
   return (
     <CardContent>
       <Typography gutterBottom variant="h5">

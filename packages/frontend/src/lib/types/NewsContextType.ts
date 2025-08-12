@@ -1,5 +1,6 @@
 import type { ChangeEvent } from 'react';
 import type { NewsType } from './News';
+import type { AddDataType } from './AddDataType';
 
 type NewsContextType = {
   news: Array<NewsType>;
@@ -9,12 +10,7 @@ type NewsContextType = {
     pages: number;
   };
   archiveToggle: (props: { id: string; date: Date | null }) => Promise<void>;
-  addNews: (props: {
-    title: string;
-    description: string;
-    author: string;
-    content: string;
-  }) => Promise<void>;
+  addNews: (props: AddDataType) => Promise<void>;
   removeNews: ({ id }: { id: string }) => Promise<void>;
 };
 

@@ -1,9 +1,13 @@
 import { Logger } from '../../../lib/utils/loggers/index.ts';
 import { News } from '../models/news.model.ts';
-import type { NewsType } from '../../../lib/types/index.ts';
+import type { NewsBaseType, NewsModelType } from '../../../lib/types/NewsType.ts';
 
 class NewsService {
-  async getNews(archived: boolean, page: number, limit: number) {
+  async getNews(
+    archived: boolean,
+    page: number,
+    limit: number
+  ): Promise<{ news: NewsModelType[]; pages: number }> {
     Logger.info('Fetching news from database');
     const skip = (page - 1) * limit;
     const query = archived ? { archiveDate: { $ne: null } } : { archiveDate: null };
@@ -13,7 +17,7 @@ class NewsService {
     Logger.debug(`Found ${news.length} news and ${total} total`);
 
     return {
-      news,
+      news: news,
       pages: Math.ceil(total / limit)
     };
   }
@@ -28,7 +32,7 @@ class NewsService {
     }
   }
 
-  async saveNews(values: NewsType) {
+  async saveNews(values: NewsBaseType) {
     Logger.info('Saving news to database');
     const news = new News({ ...values });
     await news.save();

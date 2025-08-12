@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 
-import { INTERNAL_SERVER_ERROR } from '../constants.ts';
+import { INTERNAL_SERVER_ERROR } from '../../../config/constants.ts';
 import { Logger } from '../../../lib/utils/loggers/index.ts';
 
 const errorHandler = (
