@@ -8,7 +8,7 @@ import newsRouter from './api/v1/routes/news.routes.ts';
 import { CSP_DIRECTIVES, PUBLIC_DIR_NAME } from './config/constants.ts';
 import { morganRequestLogger } from './lib/utils/loggers/index.ts';
 
-const { SELF, LOCALHOST, UNSAFE_INLINE, HTTPS_PROTOCOL } = CSP_DIRECTIVES;
+const { SELF, LOCALHOST, UNSAFE_INLINE, HTTPS_PROTOCOL, DATA_PROTOCOL } = CSP_DIRECTIVES;
 
 const app = express();
 app.use(
@@ -17,7 +17,7 @@ app.use(
       useDefaults: true,
       directives: {
         'script-src': [SELF, LOCALHOST, UNSAFE_INLINE],
-        'img-src': [SELF, HTTPS_PROTOCOL],
+        'img-src': [SELF, HTTPS_PROTOCOL, DATA_PROTOCOL],
         'default-src': [SELF]
       }
     }

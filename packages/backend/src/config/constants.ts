@@ -11,5 +11,6 @@ export const CSP_DIRECTIVES = {
   SELF: "'self'",
   LOCALHOST: 'http://localhost',
   UNSAFE_INLINE: "'unsafe-inline'",
-  HTTPS_PROTOCOL: 'https:'
+  HTTPS_PROTOCOL: 'https:',
+  DATA_PROTOCOL: 'data:'
 };
