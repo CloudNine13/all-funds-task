@@ -1,10 +1,9 @@
 import { getNews, updateNews, saveNews, deleteNews } from '@api';
 import { LoadingFallback } from '@atoms';
-import { NewsPageType, type ApiFunctionType, type NewsType } from '@lib/types';
+import { NewsPageType, type AddDataType, type ApiFunctionType, type NewsType } from '@lib/types';
 import { type ChangeEvent, type ReactNode, useCallback, useEffect, useState } from 'react';
 import { NewsContext } from './context';
-import { generateRandomString } from '@lib/utils';
-import { NEWS_ITEMS_PER_PAGE, RANDOM_IMG } from './constants';
+import { NEWS_ITEMS_PER_PAGE } from './constants';
 
 type ProviderProps = {
   children: ReactNode;
@@ -43,16 +42,9 @@ export const NewsProvider = ({ children, pageType }: ProviderProps) => {
     []
   );
 
-  const addNews: ApiFunctionType<{
-    title: string;
-    description: string;
-    author: string;
-    content: string;
-  }> = useCallback(
-    async ({ title, description, author, content }) => {
-      const image = RANDOM_IMG.replace('randomImage', generateRandomString());
-      const date = new Date();
-      await saveNews({ title, description, author, content, image, date });
+  const addNews: ApiFunctionType<AddDataType> = useCallback(
+    async ({ title, description, author, content, image }) => {
+      await saveNews({ title, description, author, content, image });
       if (!archived) await fetchNews({ page, archived });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

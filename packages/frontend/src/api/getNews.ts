@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { NEWS_API_PATH } from './constants';
-import { ERROR_GETTING_NEWS } from '@constants';
+import { ERROR } from '@constants';
 
 type GetNewsProps = {
   archived: boolean;
@@ -13,7 +13,7 @@ const getNews = async (values: GetNewsProps) => {
     const response = await axios.get(NEWS_API_PATH, { params: values });
     return response.data;
   } catch (error) {
-    alert(`${ERROR_GETTING_NEWS} ${error}`);
+    alert(`${ERROR.GETTING_NEWS} ${error}`);
   }
 };
 

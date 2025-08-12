@@ -1,4 +1,6 @@
-export const ERROR_DELETING_NEWS = 'Error deleting News:';
-export const ERROR_GETTING_NEWS = 'Error getting News:';
-export const ERROR_SAVING_NEWS = 'Error saving News:';
-export const ERROR_UPDATING_NEWS = 'Error updating News:';
+export const ERROR = {
+  DELETING_NEWS: 'Error deleting News:',
+  GETTING_NEWS: 'Error getting News:',
+  SAVING_NEWS: 'Error saving News:',
+  UPDATING_NEWS: 'Error updating News:'
+};

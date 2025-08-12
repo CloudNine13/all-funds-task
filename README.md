@@ -91,6 +91,9 @@ To get the entire project up and running, you will need to start both the fronte
 - **Emotion (`@emotion/react`, `@emotion/styled`)**
 - **Vite**
 - **TypeScript**
+- **@vitejs/plugin-react-swc:** Vite plugin for React with SWC.
+- **vite-tsconfig-paths:** Vite plugin for TypeScript path mapping.
+- **ESLint & Prettier:** For code quality and formatting.
 
 ### Backend
 
@@ -104,6 +107,12 @@ To get the entire project up and running, you will need to start both the fronte
 - **Nodemon**
 - **TypeScript**
 - **Zod**
+- **Multer:** Middleware for handling `multipart/form-data`.
+- **Multer GridFS Storage:** Storage engine for Multer to store files in MongoDB GridFS.
+- **GridFS Stream:** Streaming interface for MongoDB GridFS.
+- **Jest:** Testing framework.
+- **@faker-js/faker:** For generating fake data.
+- **ESLint & Prettier:** For code quality and formatting.**
 
 ## License
 

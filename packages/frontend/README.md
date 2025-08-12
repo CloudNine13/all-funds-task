@@ -24,6 +24,12 @@ This project leverages a modern frontend stack to deliver a robust and responsiv
 *   **Emotion (`@emotion/react`, `@emotion/styled`):** A high-performance CSS-in-JS library used for styling React components. It allows for writing CSS directly within JavaScript, enabling dynamic and component-scoped styles.
 *   **Vite:** A next-generation frontend tooling that provides an extremely fast development experience. It serves as the build tool, development server, and handles hot module replacement.
 *   **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript. It enhances code quality, readability, and maintainability by catching errors during development.
+*   **@vitejs/plugin-react-swc:** A Vite plugin that provides React support with SWC (Speedy Web Compiler) for extremely fast HMR (Hot Module Replacement) and build times.
+*   **vite-tsconfig-paths:** A Vite plugin that enables TypeScript path mapping support, allowing for cleaner import paths.
+
+## Development and Testing Tools
+
+*   **ESLint & Prettier:** Tools for static code analysis and code formatting, ensuring consistent code quality and style across the project.
 
 ## How to Start the Frontend Application
 

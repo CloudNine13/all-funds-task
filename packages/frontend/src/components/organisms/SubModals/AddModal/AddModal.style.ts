@@ -12,7 +12,7 @@ const StyledFormControl = styled(FormControl)({
 });
 
 const StyledTextareaFormControl = styled(FormControl)({
-  marginTop: '30px',
+  marginTop: '5px',
   width: '400px',
   maxHeight: '400px'
 });

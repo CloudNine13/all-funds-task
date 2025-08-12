@@ -1,25 +1,20 @@
 import axios, { AxiosError } from 'axios';
 
 import { NEWS_API_PATH } from './constants';
-import { ERROR_SAVING_NEWS } from '@constants';
+import { ERROR, MULTIPART_FORM_DATA_HEADERS } from '@constants';
 import { formatValidationErrorMessage } from '@lib/utils';
+import type { AddDataType } from '@lib/types';
 
-type SaveNewsProps = {
-  title: string;
-  description: string;
-  author: string;
-  content: string;
-  image: string;
-  date: Date;
-};
-
-const saveNews = async (values: SaveNewsProps) => {
+const saveNews = async (values: AddDataType) => {
   try {
-    await axios.post(NEWS_API_PATH, values);
+    const value = { ...values, date: new Date() };
+
+    await axios.post(NEWS_API_PATH, value, {
+      headers: MULTIPART_FORM_DATA_HEADERS
+    });
   } catch (error) {
     const errorMessage = formatValidationErrorMessage(error as AxiosError);
-
-    alert(`${ERROR_SAVING_NEWS} ${errorMessage}`);
+    alert(`${ERROR.SAVING_NEWS} ${errorMessage}`);
   }
 };
 

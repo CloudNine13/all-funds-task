@@ -5,32 +5,22 @@ import type { SubmodalProps } from '../types';
 import { StyledBox, StyledButton } from '../style';
 import { useContext } from 'react';
 import { NewsContext } from '@contexts';
-import {
-  ADD_MODAL_TITLE,
-  ADD_MODAL_NAME_LABEL,
-  ADD_MODAL_NAME_PLACEHOLDER,
-  ADD_MODAL_AUTHOR_LABEL,
-  ADD_MODAL_AUTHOR_PLACEHOLDER,
-  ADD_MODAL_DESCRIPTION_LABEL,
-  ADD_MODAL_DESCRIPTION_PLACEHOLDER,
-  ADD_MODAL_CONTENT_PLACEHOLDER,
-  ADD_MODAL_SUBMIT_BUTTON,
-  ADD_MODAL_FIELD_TITLE,
-  ADD_MODAL_FIELD_DESCRIPTION,
-  ADD_MODAL_FIELD_AUTHOR,
-  ADD_MODAL_FIELD_CONTENT
-} from '@constants';
+import { ADD_MODAL, BUTTONS } from '@constants';
+import type { AddDataType } from '@lib/types';
+
+const initialValues: AddDataType = {
+  [ADD_MODAL.FIELD.TITLE]: '',
+  [ADD_MODAL.FIELD.DESCRIPTION]: '',
+  [ADD_MODAL.FIELD.AUTHOR]: '',
+  [ADD_MODAL.FIELD.CONTENT]: '',
+  [ADD_MODAL.FIELD.IMAGE]: ''
+};
 
 const AddModal = ({ handleClose }: SubmodalProps) => {
   const { addNews } = useContext(NewsContext);
 
   const formik = useFormik({
-    initialValues: {
-      [ADD_MODAL_FIELD_TITLE]: '',
-      [ADD_MODAL_FIELD_DESCRIPTION]: '',
-      [ADD_MODAL_FIELD_AUTHOR]: '',
-      [ADD_MODAL_FIELD_CONTENT]: ''
-    },
+    initialValues,
     onSubmit: async (values) => {
       await addNews(values);
       formik.resetForm();
@@ -40,58 +30,73 @@ const AddModal = ({ handleClose }: SubmodalProps) => {
 
   return (
     <StyledBox>
-      <Typography variant="h4">{ADD_MODAL_TITLE}</Typography>
+      <Typography variant="h4">{ADD_MODAL.TITLE}</Typography>
       <StyledForm onSubmit={formik.handleSubmit}>
         <StyledFormControl variant="standard">
-          <InputLabel htmlFor={ADD_MODAL_FIELD_TITLE}>{ADD_MODAL_NAME_LABEL}</InputLabel>
+          <InputLabel htmlFor={ADD_MODAL.FIELD.TITLE}>{ADD_MODAL.NAME_LABEL}</InputLabel>
           <Input
             required
-            id={ADD_MODAL_FIELD_TITLE}
-            name={ADD_MODAL_FIELD_TITLE}
-            placeholder={ADD_MODAL_NAME_PLACEHOLDER}
+            id={ADD_MODAL.FIELD.TITLE}
+            name={ADD_MODAL.FIELD.TITLE}
+            placeholder={ADD_MODAL.NAME_PLACEHOLDER}
             value={formik.values.title}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
         </StyledFormControl>
         <StyledFormControl variant="standard">
-          <InputLabel htmlFor={ADD_MODAL_FIELD_AUTHOR}>{ADD_MODAL_AUTHOR_LABEL}</InputLabel>
+          <InputLabel htmlFor={ADD_MODAL.FIELD.AUTHOR}>{ADD_MODAL.AUTHOR_LABEL}</InputLabel>
           <Input
             required
-            id={ADD_MODAL_FIELD_AUTHOR}
-            name={ADD_MODAL_FIELD_AUTHOR}
-            placeholder={ADD_MODAL_AUTHOR_PLACEHOLDER}
+            id={ADD_MODAL.FIELD.AUTHOR}
+            name={ADD_MODAL.FIELD.AUTHOR}
+            placeholder={ADD_MODAL.AUTHOR_PLACEHOLDER}
             value={formik.values.author}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
         </StyledFormControl>
         <StyledFormControl variant="standard">
-          <InputLabel htmlFor={ADD_MODAL_FIELD_DESCRIPTION}>
-            {ADD_MODAL_DESCRIPTION_LABEL}
+          <InputLabel htmlFor={ADD_MODAL.FIELD.DESCRIPTION}>
+            {ADD_MODAL.DESCRIPTION_LABEL}
           </InputLabel>
           <Input
-            id={ADD_MODAL_FIELD_DESCRIPTION}
-            name={ADD_MODAL_FIELD_DESCRIPTION}
-            placeholder={ADD_MODAL_DESCRIPTION_PLACEHOLDER}
+            id={ADD_MODAL.FIELD.DESCRIPTION}
+            name={ADD_MODAL.FIELD.DESCRIPTION}
+            placeholder={ADD_MODAL.DESCRIPTION_PLACEHOLDER}
             value={formik.values.description}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </StyledFormControl>
+        <StyledFormControl variant="standard">
+          <input
+            accept="image/*"
+            required
+            type="file"
+            id={ADD_MODAL.FIELD.IMAGE}
+            name={ADD_MODAL.FIELD.IMAGE}
+            onChange={(event) => {
+              if (event.target.files && event.target.files.length > 0) {
+                formik.setFieldValue(ADD_MODAL.FIELD.IMAGE, event.target.files[0]);
+              }
+            }}
             onBlur={formik.handleBlur}
           />
         </StyledFormControl>
         <StyledTextareaFormControl variant="standard">
           <TextareaAutosize
             required
-            id={ADD_MODAL_FIELD_CONTENT}
-            name={ADD_MODAL_FIELD_CONTENT}
+            id={ADD_MODAL.FIELD.CONTENT}
+            name={ADD_MODAL.FIELD.CONTENT}
             minRows={6}
-            placeholder={ADD_MODAL_CONTENT_PLACEHOLDER}
+            placeholder={ADD_MODAL.CONTENT_PLACEHOLDER}
             value={formik.values.content}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
         </StyledTextareaFormControl>
-        <StyledButton type="submit">{ADD_MODAL_SUBMIT_BUTTON}</StyledButton>
+        <StyledButton type="submit">{BUTTONS.SUBMIT}</StyledButton>
       </StyledForm>
     </StyledBox>
   );

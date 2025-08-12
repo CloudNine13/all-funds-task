@@ -27,6 +27,15 @@ This project utilizes a robust set of Node.js libraries and tools to ensure effi
 *   **Nodemon:** A utility that monitors for any changes in your source and automatically restarts your server, greatly enhancing the development workflow.
 *   **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript. It significantly improves code quality, maintainability, and developer productivity by enabling static type checking.
 *   **Zod:** A TypeScript-first schema declaration and validation library, used for defining and validating data structures.
+*   **Multer:** A middleware for Express.js that handles `multipart/form-data`, primarily used for uploading files.
+*   **Multer GridFS Storage:** A storage engine for Multer that allows uploaded files to be stored directly into MongoDB GridFS.
+*   **GridFS Stream:** A streaming interface for MongoDB GridFS, enabling efficient handling of large files.
+
+## Development and Testing Tools
+
+*   **Jest:** A delightful JavaScript Testing Framework with a focus on simplicity. Used for unit and integration testing.
+*   **ESLint & Prettier:** Tools for static code analysis and code formatting, ensuring consistent code quality and style across the project.
+*   **@faker-js/faker:** A library for generating massive amounts of realistic fake data, useful for database seeding and testing.
 
 ## How to Start the Backend Application
 

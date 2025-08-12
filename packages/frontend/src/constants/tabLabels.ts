@@ -1,2 +1,4 @@
-export const ARTICLES_TAB_LABEL = 'Articles';
-export const ARCHIVED_TAB_LABEL = 'Archived';
+export const TAB_LABELS = {
+  ARTICLES: 'Articles',
+  ARCHIVED: 'Archived'
+};
